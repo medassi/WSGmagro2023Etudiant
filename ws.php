@@ -34,7 +34,7 @@ if (isset($_SESSION['intervenant'])) {
                 $intervenantController = new WSIntervenantController($action);
                 break;
             default :
-                echo new \WSJSONResponse(null, null, false, "uc non reconnu (connexion echouée)");
+                echo new \WSJSONResponse($uc, $action, false, "uc non reconnu (connexion echouée)");
         }
     } else {
         echo new \WSJSONResponse(null, null, false, "uc et action non définis (connexion echouée)");
