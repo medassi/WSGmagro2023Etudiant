@@ -12,11 +12,6 @@ spl_autoload_register(function ($className) {
 });
 
 use wscontrollers\WSIntervenantController;
-use wscontrollers\WSInterventionController;
-use wscontrollers\WSActiviteController;
-use wscontrollers\WSMachineController;
-use wscontrollers\WSCSODController;
-use wscontrollers\WSInterventionIntervenantController;
 
 $uc = filter_input(INPUT_GET, 'uc', FILTER_SANITIZE_STRING);
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
@@ -25,21 +20,6 @@ if (isset($_SESSION['intervenant'])) {
         switch ($uc) {
             case 'intervenant':
                 new WSIntervenantController($action);
-                break;
-            case 'intervention':
-                new WSInterventionController($action);
-                break;
-            case 'activite':
-                new WSActiviteController($action);
-                break;
-            case 'machine':
-                new WSMachineController($action);
-                break;
-            case 'csod':
-                new WSCSODController($action);
-                break;
-            case 'intervention_intervenant':
-                new WSInterventionIntervenantController($action);
                 break;
             default:
                 echo new \WSJSONResponse($uc, null, false, "uc non reconnu");
